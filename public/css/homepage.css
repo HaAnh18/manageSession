@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+  gap: 20px;
+}
+
+.container header a span {
+  font-weight: bold;
+  font-size: 30px;
+  color: #af3854;
+}
+
+.container header .nav .nav-item .nav-link {
+  color: #af3854;
+}
+
+.container header .nav .nav-item .active {
+  color: white;
+  background-color: #af3854;
+}
+
+.container .content .title {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+}
