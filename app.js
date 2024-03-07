@@ -1,6 +1,5 @@
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
 require('dotenv').config()
 const mongoose = require("mongoose")
 var indexRouter = require('./routes/index');
@@ -20,21 +19,17 @@ app.use(session({
 }));
 //CONNECT DATABASE
 mongoose
-  .connect(process.env.DATABASE)
-  .then(() => console.log("DB connected"))
-  .catch((err) => console.log(err));
+.connect(process.env.DATABASE)
+.then(() => console.log("DB connected"))
+.catch((err) => console.log(err));
 
 
-  const templatePath = path.join(__dirname, './views');
-  app.use(express.json());
-  app.set("view engine", "ejs");
-  app.set("views", templatePath); 
-  app.use(express.urlencoded({extended:true}));
-  app.use(express.static("public"));
-
-  
-  // MIDDLEWARE
-  app.use(cookieParser());
+const templatePath = path.join(__dirname, './views');
+app.use(express.json());
+app.set("view engine", "ejs");
+app.set("views", templatePath); 
+app.use(express.urlencoded({extended:true}));
+app.use(express.static("public"));
 
 
 // Route for handling index

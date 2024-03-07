@@ -77,6 +77,5 @@ exports.signout = async(req, res, next) => {
 }
 
 exports.getHomepage = async(req, res) => {
-  console.log(req.user);
   res.render("homepage", {user: req.user});
 }
