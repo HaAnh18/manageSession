@@ -1,4 +1,3 @@
-<title>Sign Up</title>
 <!-- Include head file with scriptlet tag -->
 <%- include('./partials/head.ejs') %>
 <link rel="stylesheet" href="/css/signup.css"/>
@@ -12,8 +11,14 @@
           </div>
       </div>
   <%}%>
-    <form class="form" method="post" action="signup">
+    <form class="form" method="post" action="signup" enctype="multipart/form-data">
       <span class="title">Sign Up</span>
+      <div class="userImg">
+        <input name="image" type="file" id="file" class="file" required accept="jpeg, jpg, png">
+        <label for="file" class="uploadbtn" id="uploadbtn">
+          <img src="/images/user.png" id="photo" class="photo"/>
+        </label>
+      </div>
 
       <div class="inputField">
         <i class="uil uil-user"></i>
@@ -21,9 +26,25 @@
       </div>
 
       <div class="inputField">
+        <i class="bi bi-person-vcard"></i>
+        <input name="name" class="name" type="text" placeholder="Enter name" required>
+      </div>
+
+      <div class="inputField">
         <i class="bi bi-shield-lock"></i>
         <input name="password" class="password" type="password" placeholder="Enter password" required>
       </div>
+
+      <div class="inputField">
+        <i class="bi bi-balloon"></i>        
+        <input name="dob" class="dob" type="date" required>
+      </div>
+
+      <div class="textField">
+        <i class="bi bi-person-badge"></i>      
+        <textarea name="bio" class="bio" placeholder="Enter bio" required></textarea>
+      </div>
+
 
       <div class="btn">
         <button type="submit" class="submitBtn">Submit</button>

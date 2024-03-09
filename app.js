@@ -8,21 +8,18 @@ const session = require('express-session');
 var app = express();
 
 app.use(session({
-  secret: process.env.SECRET, // Replace with a strong secret
-  // resave: false,
+  secret: process.env.SECRET, 
   saveUninitialized: false,
   cookie: {
-    maxAge: 60 * 60 * 1000, // Set the session duration to 1 hour (in milliseconds)
-  //   httpOnly: true, // Mark the cookie as HttpOnly
-  // secure: true, 
+    maxAge: 60 * 60 * 1000,
   }
 }));
+
 //CONNECT DATABASE
 mongoose
 .connect(process.env.DATABASE)
 .then(() => console.log("DB connected"))
 .catch((err) => console.log(err));
-
 
 const templatePath = path.join(__dirname, './views');
 app.use(express.json());
@@ -30,7 +27,6 @@ app.set("view engine", "ejs");
 app.set("views", templatePath); 
 app.use(express.urlencoded({extended:true}));
 app.use(express.static("public"));
-
 
 // Route for handling index
 app.use("/", indexRouter);

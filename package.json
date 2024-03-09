@@ -7,13 +7,14 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "cookie-parser": "~1.4.4",
+    "date-fns": "^3.3.1",
     "dotenv": "^16.4.5",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "express-session": "^1.18.0",
     "mongodb": "^6.4.0",
     "mongoose": "^8.2.1",
+    "multer": "^1.4.5-lts.1",
     "nodemon": "^3.1.0"
   }
 }

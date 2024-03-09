@@ -22,8 +22,25 @@
   background-color: #af3854;
 }
 
-.container .content .title {
+.container .title {
   font-size: 36px;
   font-weight: bold;
   text-align: center;
+  color: #af3854;
+}
+
+.container .content {
+  display: flex;
+  padding: 0 40px;
+}
+
+.container .content .userInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container .content .userInfo .info {
+  display: flex;
+  gap: 5px;
 }

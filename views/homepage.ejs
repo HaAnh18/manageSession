@@ -1,4 +1,3 @@
-<title>Homepage</title>
 <!-- Include head file with scriptlet tag -->
 <%- include('./partials/head.ejs') %>
 <link rel="stylesheet" href="/css/homepage.css"/>
@@ -20,9 +19,36 @@
     </header>
 
 
-    <div class="content">
-      <div class="title">Welcome <%= user.username %></div>
-    </div>
+    
+      <div class="title">Welcome <%= user.name %></div>
+    
+      <div class="content">
+        <div class="img">
+          <img src="/uploads/<%=user.photo%>">
+        </div>
+
+        <div class="userInfo">
+          <div class="info">
+            <strong>Username: </strong>
+            <p><%= user.username %></p>
+          </div>
+
+          <div class="info">
+            <strong>Name: </strong>
+            <p><%= user.name %></p>
+          </div>
+
+          <div class="info">
+            <strong>Date of Birth: </strong>
+            <p><%= dob %></p>
+          </div>
+
+          <div class="info">
+            <strong>Bio: </strong>
+            <p><%= user.bio %></p>
+          </div>
+        </div>
+      </div>
   </div>
 
   <!-- <script src="/javascripts/index.js"></script> -->

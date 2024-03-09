@@ -1,6 +1,7 @@
 const User = require("../models/user")
 const { hashPwd } = require("../middlewares/hash");
 const bcrypt = require("bcryptjs");
+const { format } = require('date-fns');
 
 exports.getSignup = async (req, res, next) => {
   const userId = req.session.userId;
@@ -51,7 +52,11 @@ exports.signup = async(req, res, next) => {
   const password = await hashPwd(req?.body?.password, next);
   const data = {
     username: req?.body?.username,
+    name: req?.body?.name,
     password: password,
+    photo: req?.file?.filename,
+    dob: req?.body?.dob,
+    bio: req?.body?.bio,
   }
   const usernameExist = await User.findOne({username: data.username})
 
@@ -77,5 +82,7 @@ exports.signout = async(req, res, next) => {
 }
 
 exports.getHomepage = async(req, res) => {
-  res.render("homepage", {user: req.user});
+  const normalDate = new Date(req.user.dob);
+  const date = format(normalDate, 'dd/MM/yyyy');
+  res.render("homepage", {user: req.user, dob: date});
 }
