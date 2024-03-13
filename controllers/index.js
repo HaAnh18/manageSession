@@ -2,6 +2,8 @@ const User = require("../models/user");
 const { hashPwd } = require("../middlewares/hash");
 const bcrypt = require("bcryptjs");
 const { format } = require("date-fns");
+const path = require("path");
+const fs = require("fs");
 
 // Controller function for rendering the signup page
 exports.getSignup = async (req, res) => {
@@ -63,12 +65,24 @@ exports.signup = async (req, res, next) => {
   // Hash the provided password using the hashPwd function
   const password = await hashPwd(req?.body?.password, next);
 
+  const filePath = path.join(
+    __dirname,
+    "../public/uploads/",
+    req.file.filename
+  );
+
+  // Read file contents as binary data
+  const fileData = fs.readFileSync(filePath);
+
   // Constructing the user data object
   const data = {
     username: req?.body?.username,
     name: req?.body?.name,
     password: password,
-    photo: req?.file?.filename,
+    photo: {
+      data: fileData,
+      contentType: req.file.mimetype,
+    },
     dob: req?.body?.dob,
     bio: req?.body?.bio,
   };

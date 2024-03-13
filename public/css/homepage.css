@@ -32,6 +32,7 @@
 .container .content {
   display: flex;
   padding: 0 40px;
+  gap: 24px;
 }
 
 .container .content .img {
