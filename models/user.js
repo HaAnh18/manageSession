@@ -30,3 +30,11 @@ const userSchema = new mongoose.Schema({
 
 // Create and export the User model based on the schema
 module.exports = mongoose.model("User", userSchema);
+
+
+
+
+
+
+
+
