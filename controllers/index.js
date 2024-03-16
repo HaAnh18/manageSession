@@ -65,14 +65,7 @@ exports.signup = async (req, res, next) => {
   // Hash the provided password using the hashPwd function
   const password = await hashPwd(req?.body?.password, next);
 
-  const filePath = path.join(
-    __dirname,
-    "../public/uploads/",
-    req.file.filename
-  );
-
-  // Read file contents as binary data
-  const fileData = fs.readFileSync(filePath);
+  const fileBuffer = req.file.buffer;
 
   // Constructing the user data object
   const data = {
@@ -80,7 +73,7 @@ exports.signup = async (req, res, next) => {
     name: req?.body?.name,
     password: password,
     photo: {
-      data: fileData,
+      data: fileBuffer,
       contentType: req.file.mimetype,
     },
     dob: req?.body?.dob,

@@ -1,17 +1,8 @@
 const multer = require("multer");
 const path = require("path");
 
-// Configuration for storing uploaded files
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    // Set the destination folder for uploaded files
-    cb(null, "./public/uploads");
-  },
-  filename: (req, file, cb) => {
-    // Set the filename to include the current timestamp and the original file extension
-    cb(null, Date.now() + path.extname(file.originalname));
-  },
-});
+// Configure storage for uploaded files
+const storage = multer.memoryStorage();
 
 // Middleware function for handling file uploads and filtering file formats
 const handleFileUploadError = (req, res, next) => {
