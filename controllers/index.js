@@ -65,17 +65,12 @@ exports.signup = async (req, res, next) => {
   // Hash the provided password using the hashPwd function
   const password = await hashPwd(req?.body?.password, next);
 
-  const fileBuffer = req.file.buffer;
-
   // Constructing the user data object
   const data = {
     username: req?.body?.username,
     name: req?.body?.name,
     password: password,
-    photo: {
-      data: fileBuffer,
-      contentType: req.file.mimetype,
-    },
+    photo: req?.file?.filename,
     dob: req?.body?.dob,
     bio: req?.body?.bio,
   };
